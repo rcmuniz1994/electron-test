@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
 function App() {
+  const [text, setText] = React.useState("");
+  const [make, setMake] = React.useState("");
+
+  const handleClickHTTP = () => {
+    fetch("http://localhost:8000")
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data.message);
+        setText(data.message);
+      });
+  };
+
+  const handleClickHTTPS = () => {
+    fetch(
+      "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick&brand=boosh"
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data[0].name);
+        setMake(data[0].name);
+      });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <span>{`Teste HTTP -> ${text}`}</span>
+        <span>{`Teste HTTPs -> ${make}`}</span>
       </header>
+      <button onClick={handleClickHTTP}>HTTP - Clique Aqui!</button>
+      <button onClick={handleClickHTTPS}>HTTPS - Clique Aqui!</button>
     </div>
   );
 }
