@@ -1,4 +1,7 @@
 # electron-app
+
+ℹ️ Node version: 14 or later.
+
 This project was created to validate if a electron app could consume api using http and https.
 
 The project was bootstraped using [Create React App](https://github.com/facebook/create-react-app).
