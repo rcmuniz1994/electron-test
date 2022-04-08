@@ -38,6 +38,15 @@ npm run app:dist
 
 ---
 
+## How to run the HTTP server
+
+1. Open a new terminal and, from the project root folder, run: `cd http-server`
+2. Then run: `node json.js`
+
+As a test, on a new terminal, run: `curl http://localhost:8000`. If you get this `{"message": "Test is a JSON response"}` as an answer, then the server is running fine.
+
+---
+
 ## How to build the Desktop app
 
 ⚠️ Warnning: Before you start make sure you the build [prerequisites](https://www.electronjs.org/docs/latest/development/build-instructions-linux) installed.
