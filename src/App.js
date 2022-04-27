@@ -4,6 +4,18 @@ import "./App.css";
 function App() {
   const [text, setText] = React.useState("");
   const [make, setMake] = React.useState("");
+  const [version, setVersion] = React.useState("");
+
+  React.useEffect(() => {
+    if (version || !window.ipcRenderer) {
+      return;
+    }
+
+    window.ipcRenderer.send();
+    window.ipcRenderer.getVersion((data) => {
+      setVersion(data.version);
+    });
+  }, [version]);
 
   const handleClickHTTP = () => {
     fetch("http://localhost:8000")
@@ -30,6 +42,7 @@ function App() {
       <header className="App-header">
         <span>{`Teste HTTP -> ${text}`}</span>
         <span>{`Teste HTTPs -> ${make}`}</span>
+        <span>{`Version ${version}`}</span>
       </header>
       <button onClick={handleClickHTTP}>HTTP - Clique Aqui!</button>
       <button onClick={handleClickHTTPS}>HTTPS - Clique Aqui!</button>
