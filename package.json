@@ -64,5 +64,9 @@
       "icon": "icons/icon.png"
     },
     "extends": null
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rcmuniz1994/electron-test.git"
   }
 }
