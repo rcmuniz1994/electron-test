@@ -23,8 +23,8 @@
     "electron-dev": "electron .",
     "app:dir": "electron-builder --dir",
     "app:dist": "electron-builder",
-    "electron-build": "electron-builder build --win --publish never",
-    "electron-deploy": "electron-builder build --win --publish always"
+    "electron-build-win": "electron-builder build --win --publish never",
+    "electron-deploy-win": "electron-builder build --win --publish always"
   },
   "eslintConfig": {
     "extends": [
