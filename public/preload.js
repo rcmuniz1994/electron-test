@@ -15,13 +15,11 @@ contextBridge.exposeInMainWorld("ipcRenderer", {
   checkHasUpdate: (fn) => {
     ipcRenderer.on("update_available", () => {
       ipcRenderer.removeAllListeners("update_available");
-      fn();
     });
   },
   checkIsDownloaded: (fn) => {
     ipcRenderer.on("update_downloaded", () => {
       ipcRenderer.removeAllListeners("update_downloaded");
-      fn();
     });
   },
   restartApp: () => {

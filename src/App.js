@@ -5,8 +5,6 @@ function App() {
   const [text, setText] = React.useState("");
   const [make, setMake] = React.useState("");
   const [version, setVersion] = React.useState("");
-  const [hasUpdate, setHasUpdate] = React.useState(false);
-  const [isDownloaded, setIsDownloaded] = React.useState(false);
 
   React.useEffect(() => {
     if (version || !window.ipcRenderer) {
@@ -17,18 +15,9 @@ function App() {
     window.ipcRenderer.getVersion((data) => {
       setVersion(data.version);
     });
-    window.ipcRenderer.checkHasUpdate(() => setHasUpdate(true));
-    window.ipcRenderer.checkIsDownloaded(() => {
-      setHasUpdate(false);
-      setIsDownloaded(true);
-    });
+    window.ipcRenderer.checkHasUpdate();
+    window.ipcRenderer.checkIsDownloaded();
   }, [version]);
-
-  const closeUpdateNotification = () => setHasUpdate(false);
-  const closeDownloadedNotification = () => setIsDownloaded(false);
-  const restartApp = () => {
-    window.ipcRenderer.restartApp();
-  };
 
   const handleClickHTTP = () => {
     fetch("http://localhost:8000")
@@ -59,22 +48,6 @@ function App() {
       </header>
       <button onClick={handleClickHTTP}>HTTP - Clique Aqui!</button>
       <button onClick={handleClickHTTPS}>HTTPS - Clique Aqui!</button>
-      {hasUpdate && (
-        <div class="notification">
-          <p>Nova versão disponível. Baixando...</p>
-          <button onClick={closeUpdateNotification}>Fechar</button>
-        </div>
-      )}
-      {isDownloaded && (
-        <div class="notification">
-          <p>
-            Atualização baixada. Será instalar ao reiniciar o app. Reiniciar
-            agora?
-          </p>
-          <button onClick={closeDownloadedNotification}>Fechar</button>
-          <button onClick={restartApp}>Reiniciar</button>
-        </div>
-      )}
     </div>
   );
 }
