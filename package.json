@@ -1,6 +1,6 @@
 {
   "name": "electron-app",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "private": true,
   "main": "public/main.js",
   "homepage": "./",
@@ -22,7 +22,9 @@
     "eject": "react-scripts eject",
     "electron-dev": "electron .",
     "app:dir": "electron-builder --dir",
-    "app:dist": "electron-builder"
+    "app:dist": "electron-builder",
+    "electron-build": "electron-builder build --win --publish never",
+    "electron-deploy": "electron-builder build --win --publish always"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +54,7 @@
       "build/**/*",
       "./public/main.js",
       "./public/preload.js",
+      "./public/electron-builder.yml",
       "build/static/**/*"
     ],
     "extraMetadata": {
@@ -61,7 +64,7 @@
       "target": "deb",
       "maintainer": "Muniz",
       "category": "Development",
-      "icon": "icons/icon.png"
+      "icon": "public/logo512.png"
     },
     "extends": null
   },
