@@ -54,7 +54,6 @@
       "build/**/*",
       "./public/main.js",
       "./public/preload.js",
-      "./public/electron-builder.yml",
       "build/static/**/*"
     ],
     "extraMetadata": {
