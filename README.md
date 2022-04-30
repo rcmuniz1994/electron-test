@@ -56,25 +56,21 @@ As a test, on a new terminal, run: `curl http://localhost:8000`. If you get this
 
 After this an folder called `dist` was created. There will be the installer for the desktop app.
 
+---
+
 ## How to build and publish the Desktop app for Windows using Docker
 
----
+> **⚠️ Warnning 1:** Before you start, create a file named `env.sh`. Copy the content from `env.sh.sample` and past it on the new file. After this, replace the GH_TOKEN value for your Github Token. If you don't have a Github Token, see this [doc](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create one.
 
-⚠️ Warnning 1: Before you start, create a file named `env.sh`. Copy the content from `env.sh.sample` and past it on the new file. After this, replace the GH_TOKEN value for your Github Token. If you don't have a Github Token, see this [doc](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create one.
 
----
-
-⚠️ Warnning 2: Also before you start, add this at the end of the package.json:
-
-```json
-"repository": {
-  "type" : "git",
-  "url" : "https://github.com/[YOUR USERNAME]/[YOUR REPO NAME].git"
-}
-```
-And replace the url value for your repository url.
-
----
+> **⚠️ Warnning 2:** Also before you start, add this at the end of the package.json:
+> ```json
+> "repository": {
+>  "type" : "git",
+>  "url" : "https://github.com/[YOUR USERNAME]/[YOUR REPO NAME].git"
+>}
+>```
+> And replace the url value for your repository url.
 
 Now we can go. To build the desktop app for Windows using Docker run on the project root directory:
 
