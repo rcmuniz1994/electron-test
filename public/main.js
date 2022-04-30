@@ -1,14 +1,24 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
+const { autoUpdater } = require("electron-updater");
 const path = require("path");
 const isDev = require("electron-is-dev");
 
+let win;
+
+// If you have a updater server, set here its URL
+// const server = 'https://your-deployment-url.com'
+// const url = `${server}/update/${process.platform}/${app.getVersion()}`
+
+// autoUpdater.setFeedURL({ url })
+
 function createWindow() {
   // Create the browser window.
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       nodeIntegration: true,
+      preload: path.join(__dirname, "./preload.js"), // use a preload script
     },
   });
 
@@ -20,7 +30,11 @@ function createWindow() {
   );
 
   // Open the DevTools.
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
+
+  win.once("ready-to-show", () => {
+    autoUpdater.checkForUpdatesAndNotify();
+  });
 }
 
 // This method will be called when Electron has finished
@@ -44,6 +58,22 @@ app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+ipcMain.on("app_version", (event) => {
+  event.sender.send("app_version", { version: app.getVersion() });
+});
+
+autoUpdater.on("update-available", () => {
+  win.webContents.send("update_available");
+});
+
+autoUpdater.on("update-downloaded", () => {
+  win.webContents.send("update_downloaded");
+});
+
+ipcMain.on("restart_app", () => {
+  autoUpdater.quitAndInstall();
 });
 
 // In this file you can include the rest of your app's specific main process
