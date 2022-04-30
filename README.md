@@ -72,6 +72,8 @@ After this an folder called `dist` was created. There will be the installer for 
 >```
 > And replace the url value for your repository url.
 
+> **⚠️ Warnning 3:** this implementation works only for project with public repositories. But it could work to projects with private repositories that uses Github Releases.
+
 Now we can go. To build the desktop app for Windows using Docker run on the project root directory:
 
 ```bash
