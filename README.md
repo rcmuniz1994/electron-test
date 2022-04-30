@@ -74,6 +74,16 @@ After this an folder called `dist` was created. There will be the installer for 
 
 > **⚠️ Warnning 3:** this implementation works only for project with public repositories. But it could work to projects with private repositories that uses Github Releases.
 
+> **⚠️ Warnning 4:** To projects with private repositories, a Update server is necessary (see this [doc](https://www.electronjs.org/pt/docs/latest/tutorial/updates#implementando-um-servidor-de-atualiza%C3%A7%C3%B5es)). To use a update server, on the main.js file, uncomment those lines:
+>```js
+>const server = 'https://your-deployment-url.com'
+>const url = `${server}/update/${process.platform}/${app.getVersion()}`
+>autoUpdater.setFeedURL({ url })
+>```
+>And change them using your server URL.
+><br />
+<br/>
+
 Now we can go. To build the desktop app for Windows using Docker run on the project root directory:
 
 ```bash
