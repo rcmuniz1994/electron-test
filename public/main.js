@@ -5,6 +5,12 @@ const isDev = require("electron-is-dev");
 
 let win;
 
+// If you have a updater server, set here its URL
+// const server = 'https://your-deployment-url.com'
+// const url = `${server}/update/${process.platform}/${app.getVersion()}`
+
+// autoUpdater.setFeedURL({ url })
+
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
