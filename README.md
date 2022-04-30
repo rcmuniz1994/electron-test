@@ -101,3 +101,13 @@ source env.sh && npm run electron-deploy-win
 Once it finishes, go to the [repository releases on GitHub](https://github.com/rcmuniz1994/electron-test/releases). You’ll see a draft release.
 
 Click on “Edit”, and then “Publish” to finalize the release.
+
+---
+
+## References
+
+- **Tutorial about the auto-update implementation:** https://medium.com/@johndyer24/creating-and-deploying-an-auto-updating-electron-app-for-mac-and-windows-using-electron-builder-6a3982c0cee6
+- **Github - Version Management:** https://docs.github.com/pt/repositories/releasing-projects-on-github/managing-releases-in-a-repository
+- **Electron - Auto updater:** https://www.electronjs.org/pt/docs/latest/api/auto-updater
+- **Electron - Updating apps:** https://www.electronjs.org/pt/docs/latest/tutorial/updates
+- **Electron Builder - To build Linux or Windows on any platform:** https://www.electron.build/multi-platform-build.html#docker 
