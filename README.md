@@ -89,13 +89,13 @@ docker run --rm -ti \
 On the container terminal, to install the project dependencies run:
 
 ```bash
-yarn
+npm i
 ```
 
 Then, you must run the following command to build and publish a new version on the Github Releases:
 
 ```bash
-source env.sh && yarn electron-deploy-win
+source env.sh && npm run electron-deploy-win
 ```
 
 Once it finishes, go to the [repository releases on GitHub](https://github.com/rcmuniz1994/electron-test/releases). You’ll see a draft release.
